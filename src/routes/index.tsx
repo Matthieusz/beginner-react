@@ -14,6 +14,7 @@ function RouteComponent() {
       <Link to="/quote">Random Quote Generator</Link>
       <Link to="/gradient">Gradient Generator</Link>
       <Link to="/tic-tac-toe">Tic Tac Toe</Link>
+      <Link to="/whack-a-mole">Whack a Mole</Link>
     </div>
   );
 }
