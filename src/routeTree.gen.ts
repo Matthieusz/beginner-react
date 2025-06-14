@@ -17,6 +17,7 @@ import { Route as TicTacToeImport } from './routes/tic-tac-toe'
 import { Route as StopwatchImport } from './routes/stopwatch'
 import { Route as RockPaperScissorsImport } from './routes/rock-paper-scissors'
 import { Route as QuoteImport } from './routes/quote'
+import { Route as QuizImport } from './routes/quiz'
 import { Route as GradientImport } from './routes/gradient'
 import { Route as DiceImport } from './routes/dice'
 import { Route as IndexImport } from './routes/index'
@@ -56,6 +57,12 @@ const RockPaperScissorsRoute = RockPaperScissorsImport.update({
 const QuoteRoute = QuoteImport.update({
   id: '/quote',
   path: '/quote',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const QuizRoute = QuizImport.update({
+  id: '/quiz',
+  path: '/quiz',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -100,6 +107,13 @@ declare module '@tanstack/react-router' {
       path: '/gradient'
       fullPath: '/gradient'
       preLoaderRoute: typeof GradientImport
+      parentRoute: typeof rootRoute
+    }
+    '/quiz': {
+      id: '/quiz'
+      path: '/quiz'
+      fullPath: '/quiz'
+      preLoaderRoute: typeof QuizImport
       parentRoute: typeof rootRoute
     }
     '/quote': {
@@ -153,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dice': typeof DiceRoute
   '/gradient': typeof GradientRoute
+  '/quiz': typeof QuizRoute
   '/quote': typeof QuoteRoute
   '/rock-paper-scissors': typeof RockPaperScissorsRoute
   '/stopwatch': typeof StopwatchRoute
@@ -165,6 +180,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dice': typeof DiceRoute
   '/gradient': typeof GradientRoute
+  '/quiz': typeof QuizRoute
   '/quote': typeof QuoteRoute
   '/rock-paper-scissors': typeof RockPaperScissorsRoute
   '/stopwatch': typeof StopwatchRoute
@@ -178,6 +194,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/dice': typeof DiceRoute
   '/gradient': typeof GradientRoute
+  '/quiz': typeof QuizRoute
   '/quote': typeof QuoteRoute
   '/rock-paper-scissors': typeof RockPaperScissorsRoute
   '/stopwatch': typeof StopwatchRoute
@@ -192,6 +209,7 @@ export interface FileRouteTypes {
     | '/'
     | '/dice'
     | '/gradient'
+    | '/quiz'
     | '/quote'
     | '/rock-paper-scissors'
     | '/stopwatch'
@@ -203,6 +221,7 @@ export interface FileRouteTypes {
     | '/'
     | '/dice'
     | '/gradient'
+    | '/quiz'
     | '/quote'
     | '/rock-paper-scissors'
     | '/stopwatch'
@@ -214,6 +233,7 @@ export interface FileRouteTypes {
     | '/'
     | '/dice'
     | '/gradient'
+    | '/quiz'
     | '/quote'
     | '/rock-paper-scissors'
     | '/stopwatch'
@@ -227,6 +247,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DiceRoute: typeof DiceRoute
   GradientRoute: typeof GradientRoute
+  QuizRoute: typeof QuizRoute
   QuoteRoute: typeof QuoteRoute
   RockPaperScissorsRoute: typeof RockPaperScissorsRoute
   StopwatchRoute: typeof StopwatchRoute
@@ -239,6 +260,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DiceRoute: DiceRoute,
   GradientRoute: GradientRoute,
+  QuizRoute: QuizRoute,
   QuoteRoute: QuoteRoute,
   RockPaperScissorsRoute: RockPaperScissorsRoute,
   StopwatchRoute: StopwatchRoute,
@@ -260,6 +282,7 @@ export const routeTree = rootRoute
         "/",
         "/dice",
         "/gradient",
+        "/quiz",
         "/quote",
         "/rock-paper-scissors",
         "/stopwatch",
@@ -276,6 +299,9 @@ export const routeTree = rootRoute
     },
     "/gradient": {
       "filePath": "gradient.tsx"
+    },
+    "/quiz": {
+      "filePath": "quiz.tsx"
     },
     "/quote": {
       "filePath": "quote.tsx"

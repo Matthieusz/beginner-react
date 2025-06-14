@@ -15,6 +15,7 @@ function RouteComponent() {
       <Link to="/gradient">Gradient Generator</Link>
       <Link to="/tic-tac-toe">Tic Tac Toe</Link>
       <Link to="/whack-a-mole">Whack a Mole</Link>
+      <Link to="/quiz">Quiz</Link>
     </div>
   );
 }
