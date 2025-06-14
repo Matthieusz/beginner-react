@@ -19,6 +19,7 @@ import { Route as RockPaperScissorsImport } from './routes/rock-paper-scissors'
 import { Route as QuoteImport } from './routes/quote'
 import { Route as QuizImport } from './routes/quiz'
 import { Route as GradientImport } from './routes/gradient'
+import { Route as ExpenseTrackerImport } from './routes/expense-tracker'
 import { Route as DiceImport } from './routes/dice'
 import { Route as IndexImport } from './routes/index'
 
@@ -72,6 +73,12 @@ const GradientRoute = GradientImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const ExpenseTrackerRoute = ExpenseTrackerImport.update({
+  id: '/expense-tracker',
+  path: '/expense-tracker',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const DiceRoute = DiceImport.update({
   id: '/dice',
   path: '/dice',
@@ -100,6 +107,13 @@ declare module '@tanstack/react-router' {
       path: '/dice'
       fullPath: '/dice'
       preLoaderRoute: typeof DiceImport
+      parentRoute: typeof rootRoute
+    }
+    '/expense-tracker': {
+      id: '/expense-tracker'
+      path: '/expense-tracker'
+      fullPath: '/expense-tracker'
+      preLoaderRoute: typeof ExpenseTrackerImport
       parentRoute: typeof rootRoute
     }
     '/gradient': {
@@ -166,6 +180,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dice': typeof DiceRoute
+  '/expense-tracker': typeof ExpenseTrackerRoute
   '/gradient': typeof GradientRoute
   '/quiz': typeof QuizRoute
   '/quote': typeof QuoteRoute
@@ -179,6 +194,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dice': typeof DiceRoute
+  '/expense-tracker': typeof ExpenseTrackerRoute
   '/gradient': typeof GradientRoute
   '/quiz': typeof QuizRoute
   '/quote': typeof QuoteRoute
@@ -193,6 +209,7 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/dice': typeof DiceRoute
+  '/expense-tracker': typeof ExpenseTrackerRoute
   '/gradient': typeof GradientRoute
   '/quiz': typeof QuizRoute
   '/quote': typeof QuoteRoute
@@ -208,6 +225,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/dice'
+    | '/expense-tracker'
     | '/gradient'
     | '/quiz'
     | '/quote'
@@ -220,6 +238,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/dice'
+    | '/expense-tracker'
     | '/gradient'
     | '/quiz'
     | '/quote'
@@ -232,6 +251,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/dice'
+    | '/expense-tracker'
     | '/gradient'
     | '/quiz'
     | '/quote'
@@ -246,6 +266,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DiceRoute: typeof DiceRoute
+  ExpenseTrackerRoute: typeof ExpenseTrackerRoute
   GradientRoute: typeof GradientRoute
   QuizRoute: typeof QuizRoute
   QuoteRoute: typeof QuoteRoute
@@ -259,6 +280,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DiceRoute: DiceRoute,
+  ExpenseTrackerRoute: ExpenseTrackerRoute,
   GradientRoute: GradientRoute,
   QuizRoute: QuizRoute,
   QuoteRoute: QuoteRoute,
@@ -281,6 +303,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/dice",
+        "/expense-tracker",
         "/gradient",
         "/quiz",
         "/quote",
@@ -296,6 +319,9 @@ export const routeTree = rootRoute
     },
     "/dice": {
       "filePath": "dice.tsx"
+    },
+    "/expense-tracker": {
+      "filePath": "expense-tracker.tsx"
     },
     "/gradient": {
       "filePath": "gradient.tsx"
